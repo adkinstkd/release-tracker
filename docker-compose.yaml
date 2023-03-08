@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  release-tracker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8787
+      - SPRING_PROFILES_ACTIVE=local
+    ports:
+      - "8080:8080"
+      - "8787:8787"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=release-tracker
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dev/postgresql:/var/lib/postgresql/data
+      - ./dev/bootstrap/db:/docker-entrypoint-initdb.d

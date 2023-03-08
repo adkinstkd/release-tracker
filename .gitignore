@@ -1,0 +1,35 @@
+# Intellij
+.idea/
+*.iml
+*.ipr
+*.iws
+.shelf/
+
+# Eclipse
+.classpath
+.settings/
+.project
+.bin/
+risk-core/bin/
+
+.vscode
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Gradle
+.gradle/
+build/
+classes/
+out/
+# Avoid ignoring Gradle wrapper jar file
+!gradle-wrapper.jar
+
+# Other
+**/datasource.properties
+build-lib/
+/bin/
+
+dev/postgresql
